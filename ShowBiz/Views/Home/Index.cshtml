@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<div class="jumbotron">
+    <p class="lead">This ASP.NET web application uses the MVC design pattern to manage collections of TV shows, episodes, and actors. It also allows users to create accounts. Accounts can be created with a &quot;role&quot; which contains features exclusive to that role.</p>
+</div>
+
+<div class="row">
+    <h3>Current user accounts</h3>
+    <p>
+        <ul>
+            <li><b>Executive</b>: Manages the talent acquisition and management process. Has access to features of the <i>Coordinator</i> role.</li>
+            <li><b>Coordinator</b>: Oversees or coordinates the work on a TV series. Has access to features of the <i>Clerk</i> role.</li>
+            <li><b>Clerk</b>: Supports the coordinator and executive, during the production of TV episode.</li>
+            <li><b>Admin</b>: The software developer will configure the database and publish to Microsoft Azure.</li>
+        </ul>
+    </p>
+    <br />
+    <hr />
+    <h3>Entities and supported features</h3>
+    <div class="col-md-4">
+        <h4>Show</h4>
+        <p>
+            <ul>
+                <li>&quot;Get all&quot; use case</li>
+                <li>&quot;Get one&quot; use case</li>
+                <li>&quot;Add new&quot; use case, available to the <i>Coordinator</i> &amp; <i>Executive</i> roles</li>
+            </ul>
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h4>Episode</h4>
+        <p>
+            <ul>
+                <li>&quot;Get all&quot; use case</li>
+                <li>&quot;Get one&quot; use case</li>
+                <li>&quot;Add new&quot; use case, available to the <i>Clerk</i> &amp; <i>Coordinator</i> roles</li>
+            </ul>
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h4>Actor</h4>
+        <p>
+            <ul>
+                <li>&quot;Get all&quot; use case</li>
+                <li>&quot;Get one&quot; use case</li>
+                <li>&quot;Add new&quot; use case, available to the <i>Executive</i> role</li>
+            </ul>
+        </p>
+    </div>
+</div>

@@ -1,0 +1,211 @@
+﻿@model ShowBiz.Models.ActorWithShowInfoViewModel
+
+@{
+    ViewBag.Title = Model.Name + " | Details";
+    var userAccount = new ShowBiz.Controllers.RequestUser(User as System.Security.Claims.ClaimsPrincipal);
+}
+
+<h2>@Model.Name</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlternateName)
+        </dt>
+
+        <dd>
+            @if (Model.AlternateName == null)
+            {
+                <span style="color: #8C8F8F"><em>none</em></span>
+            }
+            else
+            {
+                @Html.DisplayFor(Model => Model.AlternateName)
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </dt>
+
+        <dd>
+            @if (Model.BirthDate == null)
+            {
+                <span style="color: #8C8F8F"><em>none</em></span>
+            }
+            else
+            {
+                @Html.DisplayFor(Model => Model.BirthDate)
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Height)
+        </dt>
+
+        <dd>
+            @if (Model.Height == null)
+            {
+                <span style="color: #8C8F8F"><em>none</em></span>
+            }
+            else
+            {
+                @Html.DisplayFor(Model => Model.Height)
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+
+        <dd>
+            <img src="@Html.DisplayFor(model => model.ImageUrl)" class="img-responsive" width=150 height=150 alt="@Html.DisplayFor(model => model.Name)">
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Executive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Executive)
+        </dd>
+    </dl>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Shows) <br />
+            <span class="badge">
+                @Model.Shows.Count() show(s)
+            </span>
+        </dt>
+        <dd>
+            @foreach (var show in Model.Shows)
+            {
+                @Html.DisplayFor(showName => show.Name) <br />
+            }
+        </dd>
+    </dl>
+
+    @if (!string.IsNullOrWhiteSpace(Model.Biography))
+    {
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Biography) <br />
+            </dt>
+            <dd>
+                <div class="panel panel-default panel-body well">
+                    @Html.Raw(Model.Biography)
+                </div>
+            </dd>
+        </dl>
+    }
+
+    @if (Model.Photos.Count() > 0)
+    {
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Photos) <br />
+            </dt>
+
+            @foreach (var item in Model.Photos)
+            {
+                <dd>
+                    @*<div class="col-md-4 col-sm-5 col-xs-10">*@
+                    <img class="img-responsive img-rounded" src=@Url.Action("MediaItemDownload", "Actors", new { id = item.Id }) height="200" width="200" alt="@item.Caption" title="@item.Caption">
+                    <small>@item.Caption</small><br />
+                    @*</div>*@
+                </dd>
+            }
+        </dl>
+    }
+
+    @if (Model.Documents.Count() > 0)
+    {
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Documents) <br />
+            </dt>
+
+            <dd>
+                @foreach (var item in Model.Documents)
+                {
+                    <div class="col-md-2 col-sm-5 col-xs-10">
+                        <a href=@Url.Action("MediaItemDownload", "Actors", new { id = item.Id })>
+                            <img src="~/Content/images/icon-pdf.png" alt="@item.Caption" title="@item.Caption" class="img-responsive">
+                            <br />
+                            <small>@item.Caption</small><br />
+                        </a>
+                    </div>
+                }
+            </dd>
+        </dl>
+    }
+
+    @if (Model.AudioClips.Count() > 0)
+    {
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AudioClips) <br />
+            </dt>
+
+            @foreach (var item in Model.AudioClips)
+            {
+                <dd>
+                    <audio controls src=@Url.Action("MediaItemDownload", "Actors", new { id = item.Id })>
+                        Your browser does not support the audio tag.
+                    </audio>
+                    <br />
+                    <small>@item.Caption</small><br />
+                </dd>
+            }
+
+        </dl>
+    }
+
+    @if (Model.VideoClips.Count() > 0)
+    {
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.VideoClips) <br />
+            </dt>
+            <dd>
+                @foreach (var item in Model.VideoClips)
+                {
+                    <video controls src=@Url.Action("MediaItemDownload", "Actors", new { id = item.Id })>
+                        Your browser does not support the video tag.
+                    </video>
+                    <br />
+                    <small>@item.Caption</small><br />
+                }
+            </dd>
+        </dl>
+    }
+
+</div>
+<p>
+
+    @if (userAccount.HasRoleClaim("Executive"))
+    {
+        @Html.ActionLink("Add Media Item", "AddMediaItem") <text>&nbsp;|&nbsp;</text>
+    }
+    @if (userAccount.HasRoleClaim("Coordinator"))
+    {
+        @Html.ActionLink("Add New Show", "AddShow") <text>&nbsp;|&nbsp;</text>
+    }
+
+    @Html.ActionLink("Back to List", "Index")
+</p>

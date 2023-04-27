@@ -1,0 +1,110 @@
+﻿@model ShowBiz.Models.EpisodeWithShowNameViewModel
+
+@{
+    ViewBag.Title = Model.Name + " (" + Model.ShowName + ")";
+}
+
+<h2>@Model.Name</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShowName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SeasonNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeasonNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EpisodeNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EpisodeNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AirDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AirDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+
+        <dd>
+            <img src="@Html.DisplayFor(model => model.ImageUrl)" class="img-responsive" width=150 height=150 alt="@Html.DisplayFor(model => model.Name)">
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clerk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clerk)
+        </dd>
+    </dl>
+
+    @if (!string.IsNullOrWhiteSpace(Model.Premise))
+    {
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Premise)
+            </dt>
+            <dd>
+                <div class="panel panel-default panel-body well">
+                    @Html.Raw(Model.Premise)
+                </div>
+            </dd>
+        </dl>
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Model.VideoContentType))
+    {
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.VideoContentType)
+            </dt>
+            <dd>
+                <video controls src=@Url.Action("Video", "Episodes", new { id = Model.Id })>
+                    Your browser does not support the video tag.
+                </video>
+            </dd>
+        </dl>
+    }
+
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

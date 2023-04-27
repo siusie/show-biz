@@ -1,0 +1,108 @@
+﻿@model ShowBiz.Models.ShowWithInfoViewModel
+
+@{
+    ViewBag.Title = Model.Name + " | Details";
+    var userAccount = new ShowBiz.Controllers.RequestUser(User as System.Security.Claims.ClaimsPrincipal);
+}
+
+<h2>@Model.Name</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+
+        <dd>
+            <img src="@Html.DisplayFor(model => model.ImageUrl)" class="img-responsive" width=150 height=150 alt="@Html.DisplayFor(model => model.Name)">
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Coordinator)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Coordinator)
+        </dd>
+    </dl>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Actors) <br />
+            <span class="badge">
+                @Model.Actors.Count() actor(s)
+            </span>
+        </dt>
+        <dd>
+            @foreach (var show in Model.Actors)
+            {
+                @Html.DisplayFor(showName => show.Name) <br />
+            }
+        </dd>
+    </dl>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Episodes) <br />
+            <span class="badge">
+                @Model.Episodes.Count() episode(s)
+            </span>
+        </dt>
+        <dd>
+            @foreach (var episode in Model.Episodes)
+            {
+                @Html.DisplayFor(episodeName => episode.Name) <br />
+            }
+        </dd>
+    </dl>
+
+    @if (!string.IsNullOrWhiteSpace(Model.Premise))
+    {
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Premise) <br />
+            </dt>
+            <dd>
+                <div class="panel panel-default panel-body well">
+                    @Html.Raw(Model.Premise)
+                </div>
+            </dd>
+        </dl>
+    }
+
+</div>
+<p>
+    @if (userAccount.HasRoleClaim("Clerk"))
+    {
+        @Html.ActionLink("Add New Episode", "AddEpisode", new { id = Model.Id })<text>&nbsp;&nbsp;|&nbsp;</text>
+    }
+    @Html.ActionLink("Back to List", "Index")
+</p>
