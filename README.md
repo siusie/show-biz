@@ -7,3 +7,7 @@ This web app is deployed to Microsoft Azure. It can be accessed [here](https://s
 1. A database server
 2. SQL database, stored on the database server
 3. Web App
+
+### Main layout
+![image](https://github.com/siusie/show-biz/assets/93149998/297a5025-6d42-4fc9-938f-7375881fd1f8)
+
