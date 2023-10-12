@@ -12,3 +12,6 @@ This web app is deployed to Microsoft Azure. It can be accessed [here](https://s
 ![image](https://github.com/siusie/show-biz/assets/93149998/a339a80e-a649-48a0-a1f1-326e836b06ff)
 
 Create an account to start adding actors, shows, and episodes.
+
+### Database design
+TBA
