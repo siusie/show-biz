@@ -12,3 +12,22 @@ This web app is deployed to Microsoft Azure. It can be accessed [here](https://s
 ![image](https://github.com/siusie/show-biz/assets/93149998/a339a80e-a649-48a0-a1f1-326e836b06ff)
 
 Create an account to start adding actors, shows, and episodes.
+
+### Database design
+TBA
+
+### Registering an account
+The roles have different "responsibilities".
+
+- `Executive`: Able to add actors
+- `Coordinator`: Able to add show(s) for an actor
+- `Clerk`: Able to add episode(s) for a show
+
+![image](https://github.com/siusie/show-biz/assets/93149998/f446210c-0ee6-48bb-9254-adc44b5040d1)
+
+
+### Adding an Actor
+The functionality is available to accounts with the "Executive" roles.
+
+![image](https://github.com/siusie/show-biz/assets/93149998/5b318435-2439-4c8d-a0cf-9bf6a902475e)
+
