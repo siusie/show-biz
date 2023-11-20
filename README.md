@@ -14,7 +14,16 @@ This web app is deployed to Microsoft Azure. It can be accessed [here](https://s
 Create an account to start adding actors, shows, and episodes.
 
 ### Database design
-TBA
+Persistent storage for the data model contains the following entities:
+- Actor
+- Show
+- Episode
+- Genre
+
+The associations between these classes:
+
+![image](https://github.com/siusie/show-biz/assets/93149998/4307d18e-ed56-47af-bdfa-95015d170b00)
+
 
 ### Registering an account
 The roles have different "responsibilities".
