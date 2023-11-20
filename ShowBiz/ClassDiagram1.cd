@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ShowBiz.Data.Show">
+    <Position X="1.5" Y="0.5" Width="1.5" />
+    <AssociationLine Name="Episodes" Type="ShowBiz.Data.Episode" FixedFromPoint="true">
+      <Path>
+        <Point X="1.812" Y="3.209" />
+        <Point X="1.812" Y="5.25" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACQAAACCAIgAAAAAIAAAQAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Data\Show.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Actors" />
+      <Property Name="Episodes" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="ShowBiz.Data.Actor">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACQAAABgABAAAAAAIAAAQAAAAAAAAAAEAAAAAAAEA=</HashCode>
+      <FileName>Data\Actor.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="ActorMediaItems" />
+      <Property Name="Shows" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="ShowBiz.Data.Episode">
+    <Position X="1.5" Y="5.25" Width="1.5" />
+    <AssociationLine Name="Show" Type="ShowBiz.Data.Show">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.746" Y="0.097" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>QAgCQAAACAAAgAAAAAIAAAQAABAEAAAAAAAAAAQAgAg=</HashCode>
+      <FileName>Data\Episode.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Show" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ShowBiz.Data.Genre">
+    <Position X="5.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Genre.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowBiz.Data.ActorMediaItem">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAgAAgAAAAAAAAAAAAAAAAAAACAAQAAAAAAA=</HashCode>
+      <FileName>Data\ActorMediaItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
